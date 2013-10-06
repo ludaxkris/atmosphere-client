@@ -1,0 +1,299 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Profile|Win32">
+      <Configuration>Profile</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{D3D09101-96D0-4629-88B8-122C0256058C}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>11.0.51106.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>Debug\</OutDir>
+    <IntDir>Debug\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>Release\</OutDir>
+    <IntDir>Release\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;DEBUG;PROFILE;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader />
+      <PrecompiledHeaderFile>dxstdafx.h</PrecompiledHeaderFile>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <DisableSpecificWarnings>4995;4201;4127;4706;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <AdditionalOptions>/IGNORE:4089 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>dxerr.lib;dxguid.lib;d3dx9.lib;d3d9.lib;winmm.lib;comctl32.lib;WS2_32.lib;Mswsock.lib;Advapi32.lib;fmodex_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)Atmosphere.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <EntryPointSymbol>WinMainCRTStartup</EntryPointSymbol>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <OmitFramePointers>true</OmitFramePointers>
+      <AdditionalIncludeDirectories>Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling />
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader />
+      <PrecompiledHeaderFile>dxstdafx.h</PrecompiledHeaderFile>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalOptions>/IGNORE:4089 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>dxerr.lib;dxguid.lib;d3dx9.lib;d3d9.lib;winmm.lib;comctl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)Atmosphere.exe</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <OmitFramePointers>true</OmitFramePointers>
+      <AdditionalIncludeDirectories>Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;PROFILE;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling />
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>dxstdafx.h</PrecompiledHeaderFile>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalOptions>/IGNORE:4089 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>dxerr.lib;dxguid.lib;d3dx9.lib;d3d9.lib;winmm.lib;comctl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)Atmosphere.exe</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Image Include="Common\directx.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Common\dxstdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Common\Utilities.cpp" />
+    <ClCompile Include="GraphicsManager\Camera.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="GraphicsManager\Controller.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="GraphicsManager\GraphicsManager.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="GraphicsManager\MyEffect.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="GraphicsManager\MyLight.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Objects\AIShip.cpp" />
+    <ClCompile Include="Objects\Asteroid.cpp" />
+    <ClCompile Include="Objects\Base.cpp" />
+    <ClCompile Include="Objects\Item.cpp" />
+    <ClCompile Include="Objects\MaryMaid.cpp" />
+    <ClCompile Include="Objects\ObjectManager.cpp" />
+    <ClCompile Include="Objects\Ocean.cpp" />
+    <ClCompile Include="Objects\PlayerShip.cpp" />
+    <ClCompile Include="Objects\Projectile.cpp" />
+    <ClCompile Include="Objects\Ship.cpp" />
+    <ClCompile Include="Objects\SkyBox.cpp" />
+    <ClCompile Include="Objects\SpaceObject.cpp" />
+    <ClCompile Include="Objects\World.cpp" />
+    <ClCompile Include="Network\client.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="ConfigManager\ConfigManager.cpp" />
+    <ClCompile Include="ConfigManager\tinystr.cpp" />
+    <ClCompile Include="ConfigManager\tinyxml.cpp" />
+    <ClCompile Include="ConfigManager\tinyxmlerror.cpp" />
+    <ClCompile Include="ConfigManager\tinyxmlparser.cpp" />
+    <ClCompile Include="Sound\Sound.cpp" />
+    <ClCompile Include="ParticleSystemManager\Emitter.cpp" />
+    <ClCompile Include="ParticleSystemManager\EmitterHandler.cpp" />
+    <ClCompile Include="ParticleSystemManager\Particle.cpp" />
+    <ClCompile Include="ParticleSystemManager\ParticleHandler.cpp" />
+    <ClCompile Include="ParticleSystemManager\ParticleSystemManager.cpp" />
+    <ClCompile Include="ParticleSystemManager\Request.cpp" />
+    <ClCompile Include="ParticleSystemManager\Emitters\E_Atmosphere.cpp" />
+    <ClCompile Include="ParticleSystemManager\Emitters\E_Clouds.cpp" />
+    <ClCompile Include="ParticleSystemManager\Emitters\E_Explosion_Cluster.cpp" />
+    <ClCompile Include="ParticleSystemManager\Emitters\E_Projectile_Type_1_lvl_1.cpp" />
+    <ClCompile Include="ParticleSystemManager\Emitters\E_Thrust.cpp" />
+    <ClCompile Include="ParticleSystemManager\Emitters\EmitBurst.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="ParticleSystemManager\Emitters\EmitCont.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="HUDManager\HUDManager.cpp" />
+    <ClCompile Include="HUDManager\Panel.cpp" />
+    <ClCompile Include="AtmoSphere.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Common\dxstdafx.h" />
+    <ClInclude Include="Common\Utilities.h" />
+    <ClInclude Include="GraphicsManager\Camera.h" />
+    <ClInclude Include="GraphicsManager\Controller.h" />
+    <ClInclude Include="GraphicsManager\GraphicsManager.h" />
+    <ClInclude Include="GraphicsManager\MyEffect.h" />
+    <ClInclude Include="GraphicsManager\MyLight.h" />
+    <ClInclude Include="Objects\AIShip.h" />
+    <ClInclude Include="Objects\Asteroid.h" />
+    <ClInclude Include="Objects\Base.h" />
+    <ClInclude Include="Objects\Item.h" />
+    <ClInclude Include="Objects\MaryMaid.h" />
+    <ClInclude Include="Objects\ObjectManager.h" />
+    <ClInclude Include="Objects\Ocean.h" />
+    <ClInclude Include="Objects\PlayerShip.h" />
+    <ClInclude Include="Objects\Projectile.h" />
+    <ClInclude Include="Objects\Resource.h" />
+    <ClInclude Include="Objects\SharedInfo.h" />
+    <ClInclude Include="Objects\Ship.h" />
+    <ClInclude Include="Objects\SkyBox.h" />
+    <ClInclude Include="Objects\SpaceObject.h" />
+    <ClInclude Include="Objects\World.h" />
+    <ClInclude Include="Network\client.h" />
+    <ClInclude Include="ConfigManager\ConfigManager.h" />
+    <ClInclude Include="ConfigManager\tinystr.h" />
+    <ClInclude Include="ConfigManager\tinyxml.h" />
+    <ClInclude Include="Sound\Sound.h" />
+    <ClInclude Include="ParticleSystemManager\Emitter.h" />
+    <ClInclude Include="ParticleSystemManager\EmitterHandler.h" />
+    <ClInclude Include="ParticleSystemManager\Particle.h" />
+    <ClInclude Include="ParticleSystemManager\ParticleHandler.h" />
+    <ClInclude Include="ParticleSystemManager\ParticleSystemManager.h" />
+    <ClInclude Include="ParticleSystemManager\Request.h" />
+    <ClInclude Include="ParticleSystemManager\Emitters\E_Atmosphere.h" />
+    <ClInclude Include="ParticleSystemManager\Emitters\E_Clouds.h" />
+    <ClInclude Include="ParticleSystemManager\Emitters\E_Explosion_Cluster.h" />
+    <ClInclude Include="ParticleSystemManager\Emitters\E_Projectile_Type_1_lvl_1.h" />
+    <ClInclude Include="ParticleSystemManager\Emitters\E_Thrust.h" />
+    <ClInclude Include="ParticleSystemManager\Emitters\EmitBurst.h" />
+    <ClInclude Include="ParticleSystemManager\Emitters\EmitCont.h" />
+    <ClInclude Include="HUDManager\HUDManager.h" />
+    <ClInclude Include="HUDManager\Panel.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="GraphicsManager\Effects\GenericRender.fx" />
+    <FxCompile Include="GraphicsManager\Effects\PlanetHLSL.fx" />
+    <FxCompile Include="GraphicsManager\Effects\ShipHLSL.fx" />
+    <FxCompile Include="GraphicsManager\Effects\skybox.fx" />
+    <FxCompile Include="ParticleSystemManager\Effects\E_Clouds.fx" />
+    <FxCompile Include="ParticleSystemManager\Effects\E_Explosion_Cluster.fx" />
+    <FxCompile Include="ParticleSystemManager\Effects\E_Projectile_Type_1.fx" />
+    <FxCompile Include="ParticleSystemManager\Effects\E_Thrust.fx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="config\atmosphere.config" />
+    <None Include="config\controller.config" />
+    <None Include="config\ObjManager.config" />
+    <None Include="config\particleManager.config" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

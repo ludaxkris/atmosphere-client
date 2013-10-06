@@ -1,0 +1,274 @@
+//--------------------------------------------------------------------------------------
+// Global variables
+//--------------------------------------------------------------------------------------
+
+//global lights
+float3 sunLightDir[4];              // Light's direction in world space
+float4 sunLightDiffuse[4];          // Light's diffuse color
+float4 sunLightAmbient[4];          // Light's ambient color
+int numSunLights;					// Number of Sun lights
+
+
+float4 planetMatAmbient;			// Material's ambient color
+float4 planetMatDiffuse;			// Material's diffuse color
+
+//textures
+texture colorMap;					// Color map for the terrain
+texture normalMap;					// Color map for the terrain
+texture cubeTexture;				// light cube map
+
+float4x4 g_mWorld;                  // World matrix for object
+float4x4 g_mWorldViewProjection;    // World * View * Projection matrix
+
+//other lightsources
+float3	lightPositions[4];			// Position of ship
+float4	lightDiffuse[4];			// Ship light color
+int		numLights;					// number of ships
+
+//--------------------------------------------------------------------------------------
+// Texture samplers
+//--------------------------------------------------------------------------------------
+sampler normalMapTex = sampler_state
+{
+    Texture = <normalMap>;
+    MipFilter = LINEAR;
+    MinFilter = LINEAR;
+    MagFilter = LINEAR;
+    
+    ADDRESSU = Clamp;
+    ADDRESSV = Clamp;
+};
+
+sampler colorMapTex = sampler_state
+{
+    Texture = <colorMap>;
+    MipFilter = LINEAR;
+    MinFilter = LINEAR;
+    MagFilter = LINEAR;
+    
+    ADDRESSU = Clamp;
+    ADDRESSV = Clamp;
+};
+
+
+sampler CubeTexture = sampler_state
+{ 
+    Texture = (cubeTexture);
+    MipFilter = LINEAR;
+    MinFilter = LINEAR;
+    MagFilter = LINEAR;
+    ADDRESSU = Clamp;
+    ADDRESSV = Clamp;
+};
+
+
+//--------------------------------------------------------------------------------------
+// Vertex shader output structure
+//--------------------------------------------------------------------------------------
+struct INPUT
+{ 
+    float4 position   : POSITION0;
+    float3 normal	  : NORMAL;
+    float2 texUV      : TEXCOORD0;
+    float3 tangent    : TANGENT;
+    float3 binormal	  : BINORMAL;
+};
+
+struct VS_OUTPUT
+{
+    float4 Position		: POSITION;   // vertex position 
+    float2 TextureUV	: TEXCOORD0;  // vertex texture coords 
+    float3 Normal		: TEXCOORD1;  // vertex normal
+    float3 PPosition	: TEXCOORD2;  // Pixel coordinates
+    float3 vLight		: TEXCOORD3;  // tangent
+    float3x3 mat		: TEXCOORD4;
+};
+
+//vertex to pixel shader structure
+struct v2p
+{
+     float4 position	: POSITION;
+     float2 tex0		: TEXCOORD0;  
+     float3 lightVec	: TEXCOORD1;
+     float3 normal		: TEXCOORD2;
+     float3 PPosition	: TEXCOORD3;
+     float3 sunLight[4]	: TEXCOORD4;
+};
+
+//--------------------------------------------------------------------------------------
+// This shader computes standard transform and lighting
+//--------------------------------------------------------------------------------------
+VS_OUTPUT RenderSceneVS2( in INPUT In)
+{
+    VS_OUTPUT Output;
+   
+    // Transform the position from object space to homogeneous projection space
+    Output.Position		= mul(In.position , g_mWorldViewProjection);
+       
+    // Just copy the texture coordinate through
+    Output.TextureUV = In.texUV; 
+    
+    //Normal
+    float4 posWorld		= mul(In.position, g_mWorld);
+    float3 light		= normalize(lightPositions[0] - posWorld);
+    float3x3 TBNMatrix	= float3x3(In.tangent, In.binormal , In.normal); 
+    Output.mat			= TBNMatrix;
+    Output.vLight		= mul(TBNMatrix, light);
+
+    
+    //Pass values to the pixel shader
+    Output.Normal		= mul(In.normal , g_mWorld);
+	Output.PPosition	= mul(In.position , g_mWorld).xyz;
+            
+    return Output;    
+}
+
+v2p RenderSceneVS3( in INPUT IN)
+{
+	v2p OUT;
+	
+    //getting to position to object space
+    OUT.position = mul(IN.position, g_mWorldViewProjection);
+
+    //getting the position of the vertex in the world
+    float4 posWorld = mul(IN.position, g_mWorld);
+	OUT.PPosition	= posWorld;
+
+
+    //getting vertex -> light vector
+    float3 light = normalize(lightPositions[0] - posWorld); //uses player's light
+    //float3 light = normalize(sunLightDir[0]);	   //uses sunlight
+
+    //calculating the binormal and setting the Tangent Binormal and Normal matrix
+    float3x3 TBNMatrix = float3x3(IN.tangent, IN.binormal , IN.normal);
+
+    //setting the lightVector
+    OUT.lightVec    = mul(TBNMatrix, light);
+	OUT.sunLight[0] = mul(TBNMatrix, normalize(sunLightDir[0]));
+	OUT.sunLight[1] = mul(TBNMatrix, normalize(sunLightDir[1]));
+	OUT.sunLight[2] = mul(TBNMatrix, normalize(sunLightDir[2]));
+	OUT.sunLight[3] = mul(TBNMatrix, normalize(sunLightDir[3]));
+
+    //calculate the attenuation
+    //OUT.att = 1/( 1 + ( 0.005 * distance(lightPositions[0].xyz, posWorld) ) );
+    OUT.normal = mul(IN.normal , g_mWorld);
+ 
+    OUT.tex0 = IN.texUV;   
+    
+    return OUT;
+}
+
+
+//--------------------------------------------------------------------------------------
+// Pixel shader output structure
+//--------------------------------------------------------------------------------------
+struct PS_OUTPUT
+{
+    float4 RGBColor : COLOR0;  // Pixel color    
+};
+
+
+//--------------------------------------------------------------------------------------
+// This shader outputs the pixel's color by modulating the texture's
+//       color with diffuse material color
+//--------------------------------------------------------------------------------------
+PS_OUTPUT RenderScenePS( VS_OUTPUT In ) 
+{ 
+    PS_OUTPUT Output;
+        
+	float3 LDiffuse;	
+	float3 normal		= normalize(In.Normal);						// normalize the interpolated normals;  
+	float3 vNormalMap	= 2.0f * tex2D(normalMapTex, normalize(In.TextureUV)).rgb - 1.0f;      
+    
+    float3 diffuse		= float3(0,0,0);
+    float3 temp			= float3(0,0,0);  	
+	float3 ambient		= texCUBE( CubeTexture, normalize(In.PPosition));
+  
+	
+	
+	//sunlight
+    for(int i = 0; i < 3; i++)
+		temp += saturate(dot(normal,sunLightDir[i])*.4);
+	
+			
+		
+    diffuse += temp;
+    diffuse = max (0, diffuse);
+    
+    //moveable lights
+	for(int j = 0; j < 1; j++)
+    {
+		float3 lightDir		= lightPositions[j] - In.PPosition;	
+		float len			= length(lightDir); 	
+		lightDir			= lightDir/len; 			
+		diffuse				+=(1-temp) * lightDiffuse[j] * (dot(normal, lightDir) * (  (5/len) + (200/(len*len*len)) ));
+		
+	}
+    
+    diffuse = min(diffuse, 1);
+   
+    float  height = length(In.PPosition.xyz);	
+    
+    //add ambient
+    Output.RGBColor.rgb = ambient * .29;  
+	
+    //color map
+	Output.RGBColor.rgb += tex1D(colorMapTex, (height-18)/3.60) * diffuse;
+    
+    Output.RGBColor.a	= 1;    
+
+    return Output;
+}
+
+PS_OUTPUT RenderScenePS2(in v2p IN) 
+{ 
+    PS_OUTPUT OUT;
+    
+   	float3 sNormal		= normalize(IN.normal);						// normalize the interpolated normals;  
+    float sDiffuse		= float3(0,0,0);
+  //  float tempDiffuse	= float3(0,0,0);  	
+	float3 ambient		= texCUBE( CubeTexture, normalize(IN.PPosition));
+  
+	
+	
+    
+    
+	//calculate the color
+	float  height = (length(IN.PPosition.xyz)-18)/3.6;	//value between 0 and 1
+	float4 color  = float4(tex1D(colorMapTex, height));
+
+
+    //get normal map and calculate normal color
+    float3 nNormal = 2.0f * tex2D(normalMapTex, IN.tex0).rgb - 1.0f;
+    float3 nLight = normalize(IN.lightVec);
+    //float nDiffuse = saturate(dot(nNormal, nLight));
+		
+	float3 lightDir		= lightPositions[0] - IN.PPosition;	
+    float len			= length(lightDir); 
+    sDiffuse			= saturate(dot(nNormal, nLight))* (7/len);// * (  (5/len) + (200/(len*len*len)) );
+    	
+    //no neg values
+    sDiffuse = max (0, sDiffuse);
+    
+    //Add sun light
+    for(int i = 0; i < 1; i++)
+		sDiffuse += (1-sDiffuse)*saturate(dot(sNormal, normalize(IN.sunLight[i]))*.8);	// sunLightDir[i]))*.5; //,
+    	
+    //set color
+    OUT.RGBColor.rgb	= color.rgb * sDiffuse;// * sDiffuse;     
+    OUT.RGBColor.a		=1;
+    
+    return OUT;
+}
+
+//--------------------------------------------------------------------------------------
+// Renders scene to render target
+//--------------------------------------------------------------------------------------
+technique RenderSceneWithTexture1Light
+{
+    pass P0
+    {          
+        VertexShader = compile vs_2_a RenderSceneVS3();
+        PixelShader  = compile ps_2_a RenderScenePS2(); 
+    }    
+}

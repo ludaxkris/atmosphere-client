@@ -1,0 +1,347 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{ac9459eb-0c5b-46c2-bb11-448edb6df285}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{a8912104-09a5-4e4f-80b1-b7a2609b1bf7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GraphicsManager">
+      <UniqueIdentifier>{bffbd16b-676a-44ba-8076-d5a30995bcf7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GraphicsManager\Effects">
+      <UniqueIdentifier>{34385f68-ecd1-47a8-ae0c-1242d9922d26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects">
+      <UniqueIdentifier>{7d0aba8a-c07b-4749-bc11-c4d3a811fde7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Network">
+      <UniqueIdentifier>{1ca7b70b-722a-4377-9150-e6cef512f004}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ConfigManager">
+      <UniqueIdentifier>{98876703-28ef-4b7d-accb-7361c2541b0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ConfigManager\Config Files">
+      <UniqueIdentifier>{9c344d26-ea25-4759-afb3-26e1fbfb1ce6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sound">
+      <UniqueIdentifier>{5a00f271-5bba-4abd-a1de-35efa38d7675}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ParticleSystemManager">
+      <UniqueIdentifier>{2b5fff87-4445-4309-b34b-02a72b229149}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ParticleSystemManager\Effects">
+      <UniqueIdentifier>{0af7d4a0-7462-4782-91fa-1036aaea2e7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ParticleSystemManager\Emitters">
+      <UniqueIdentifier>{42b91f96-0303-42dc-8c83-4291795ef8c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HUDManager">
+      <UniqueIdentifier>{0b5c8433-fde2-4994-a84f-17054598dbde}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Common\directx.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Common\dxstdafx.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\Utilities.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicsManager\Camera.cpp">
+      <Filter>GraphicsManager</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicsManager\Controller.cpp">
+      <Filter>GraphicsManager</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicsManager\GraphicsManager.cpp">
+      <Filter>GraphicsManager</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicsManager\MyEffect.cpp">
+      <Filter>GraphicsManager</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicsManager\MyLight.cpp">
+      <Filter>GraphicsManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Objects\AIShip.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Objects\Asteroid.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Objects\Base.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Objects\Item.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Objects\MaryMaid.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Objects\ObjectManager.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Objects\Ocean.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Objects\PlayerShip.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Objects\Projectile.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Objects\Ship.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Objects\SkyBox.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Objects\SpaceObject.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Objects\World.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\client.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="ConfigManager\ConfigManager.cpp">
+      <Filter>ConfigManager</Filter>
+    </ClCompile>
+    <ClCompile Include="ConfigManager\tinystr.cpp">
+      <Filter>ConfigManager</Filter>
+    </ClCompile>
+    <ClCompile Include="ConfigManager\tinyxml.cpp">
+      <Filter>ConfigManager</Filter>
+    </ClCompile>
+    <ClCompile Include="ConfigManager\tinyxmlerror.cpp">
+      <Filter>ConfigManager</Filter>
+    </ClCompile>
+    <ClCompile Include="ConfigManager\tinyxmlparser.cpp">
+      <Filter>ConfigManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Sound\Sound.cpp">
+      <Filter>Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleSystemManager\Emitter.cpp">
+      <Filter>ParticleSystemManager</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleSystemManager\EmitterHandler.cpp">
+      <Filter>ParticleSystemManager</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleSystemManager\Particle.cpp">
+      <Filter>ParticleSystemManager</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleSystemManager\ParticleHandler.cpp">
+      <Filter>ParticleSystemManager</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleSystemManager\ParticleSystemManager.cpp">
+      <Filter>ParticleSystemManager</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleSystemManager\Request.cpp">
+      <Filter>ParticleSystemManager</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleSystemManager\Emitters\E_Atmosphere.cpp">
+      <Filter>ParticleSystemManager\Emitters</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleSystemManager\Emitters\E_Clouds.cpp">
+      <Filter>ParticleSystemManager\Emitters</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleSystemManager\Emitters\E_Explosion_Cluster.cpp">
+      <Filter>ParticleSystemManager\Emitters</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleSystemManager\Emitters\E_Projectile_Type_1_lvl_1.cpp">
+      <Filter>ParticleSystemManager\Emitters</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleSystemManager\Emitters\E_Thrust.cpp">
+      <Filter>ParticleSystemManager\Emitters</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleSystemManager\Emitters\EmitBurst.cpp">
+      <Filter>ParticleSystemManager\Emitters</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleSystemManager\Emitters\EmitCont.cpp">
+      <Filter>ParticleSystemManager\Emitters</Filter>
+    </ClCompile>
+    <ClCompile Include="HUDManager\HUDManager.cpp">
+      <Filter>HUDManager</Filter>
+    </ClCompile>
+    <ClCompile Include="HUDManager\Panel.cpp">
+      <Filter>HUDManager</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoSphere.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Common\dxstdafx.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\Utilities.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsManager\Camera.h">
+      <Filter>GraphicsManager</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsManager\Controller.h">
+      <Filter>GraphicsManager</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsManager\GraphicsManager.h">
+      <Filter>GraphicsManager</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsManager\MyEffect.h">
+      <Filter>GraphicsManager</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsManager\MyLight.h">
+      <Filter>GraphicsManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects\AIShip.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects\Asteroid.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects\Base.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects\Item.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects\MaryMaid.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects\ObjectManager.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects\Ocean.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects\PlayerShip.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects\Projectile.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects\Resource.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects\SharedInfo.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects\Ship.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects\SkyBox.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects\SpaceObject.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects\World.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\client.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="ConfigManager\ConfigManager.h">
+      <Filter>ConfigManager</Filter>
+    </ClInclude>
+    <ClInclude Include="ConfigManager\tinystr.h">
+      <Filter>ConfigManager</Filter>
+    </ClInclude>
+    <ClInclude Include="ConfigManager\tinyxml.h">
+      <Filter>ConfigManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Sound\Sound.h">
+      <Filter>Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleSystemManager\Emitter.h">
+      <Filter>ParticleSystemManager</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleSystemManager\EmitterHandler.h">
+      <Filter>ParticleSystemManager</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleSystemManager\Particle.h">
+      <Filter>ParticleSystemManager</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleSystemManager\ParticleHandler.h">
+      <Filter>ParticleSystemManager</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleSystemManager\ParticleSystemManager.h">
+      <Filter>ParticleSystemManager</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleSystemManager\Request.h">
+      <Filter>ParticleSystemManager</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleSystemManager\Emitters\E_Atmosphere.h">
+      <Filter>ParticleSystemManager\Emitters</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleSystemManager\Emitters\E_Clouds.h">
+      <Filter>ParticleSystemManager\Emitters</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleSystemManager\Emitters\E_Explosion_Cluster.h">
+      <Filter>ParticleSystemManager\Emitters</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleSystemManager\Emitters\E_Projectile_Type_1_lvl_1.h">
+      <Filter>ParticleSystemManager\Emitters</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleSystemManager\Emitters\E_Thrust.h">
+      <Filter>ParticleSystemManager\Emitters</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleSystemManager\Emitters\EmitBurst.h">
+      <Filter>ParticleSystemManager\Emitters</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleSystemManager\Emitters\EmitCont.h">
+      <Filter>ParticleSystemManager\Emitters</Filter>
+    </ClInclude>
+    <ClInclude Include="HUDManager\HUDManager.h">
+      <Filter>HUDManager</Filter>
+    </ClInclude>
+    <ClInclude Include="HUDManager\Panel.h">
+      <Filter>HUDManager</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="GraphicsManager\Effects\GenericRender.fx">
+      <Filter>GraphicsManager\Effects</Filter>
+    </FxCompile>
+    <FxCompile Include="GraphicsManager\Effects\PlanetHLSL.fx">
+      <Filter>GraphicsManager\Effects</Filter>
+    </FxCompile>
+    <FxCompile Include="GraphicsManager\Effects\ShipHLSL.fx">
+      <Filter>GraphicsManager\Effects</Filter>
+    </FxCompile>
+    <FxCompile Include="GraphicsManager\Effects\skybox.fx">
+      <Filter>GraphicsManager\Effects</Filter>
+    </FxCompile>
+    <FxCompile Include="ParticleSystemManager\Effects\E_Clouds.fx">
+      <Filter>ParticleSystemManager\Effects</Filter>
+    </FxCompile>
+    <FxCompile Include="ParticleSystemManager\Effects\E_Explosion_Cluster.fx">
+      <Filter>ParticleSystemManager\Effects</Filter>
+    </FxCompile>
+    <FxCompile Include="ParticleSystemManager\Effects\E_Projectile_Type_1.fx">
+      <Filter>ParticleSystemManager\Effects</Filter>
+    </FxCompile>
+    <FxCompile Include="ParticleSystemManager\Effects\E_Thrust.fx">
+      <Filter>ParticleSystemManager\Effects</Filter>
+    </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="config\atmosphere.config">
+      <Filter>ConfigManager\Config Files</Filter>
+    </None>
+    <None Include="config\controller.config">
+      <Filter>ConfigManager\Config Files</Filter>
+    </None>
+    <None Include="config\ObjManager.config">
+      <Filter>ConfigManager\Config Files</Filter>
+    </None>
+    <None Include="config\particleManager.config">
+      <Filter>ConfigManager\Config Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>
